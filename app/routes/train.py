@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 
-@router.get("")
+@router.post("")
 def train():
     try:
         return {"message": f"train success"}
