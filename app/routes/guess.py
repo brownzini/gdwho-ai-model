@@ -3,8 +3,8 @@ from fastapi import APIRouter, HTTPException
 router = APIRouter()
 
 @router.get("")
-def train():
+def guess():
     try:
-        return {"message": f"train success"}
+        return {"message": f"guess success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
