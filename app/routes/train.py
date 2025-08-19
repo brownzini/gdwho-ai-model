@@ -1,13 +1,20 @@
-from fastapi import APIRouter, HTTPException
-
+from fastapi import APIRouter, HTTPException, Depends
+from app.applications.usecases.train_usecase import TrainUsecase
+from app.infrastructure.gateways.train.train_impl import TrainImplementation
 from app.model.schemas import TrainingRequest
-from app.services.model_service import get_model
 
 router = APIRouter()
 
+def get_train_usecase() -> TrainUsecase:
+    train_impl = TrainImplementation()
+    return TrainUsecase(train_impl)
+
 @router.post("")
-def train(request: TrainingRequest):
+def train(
+    request: TrainingRequest,
+    train_usecase: TrainUsecase = Depends(get_train_usecase)
+):
     try:
-        return get_model(request.id)
+        return train_usecase.get_model(request.id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
