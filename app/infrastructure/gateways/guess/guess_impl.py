@@ -14,3 +14,5 @@ class GuessImplementation(GuessGateway):
         idx = int(torch.argmax(sims).item())
         score = float(sims[idx])
         return { "result": round(score, 4) }
+
+    
