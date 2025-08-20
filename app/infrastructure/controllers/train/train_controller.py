@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from app.applications.usecases.train_usecase import TrainUsecase
+from app.infrastructure.controllers.train.train_dto import TrainingRequest
 from app.infrastructure.gateways.train.train_impl import TrainImplementation
-from app.model.schemas import TrainingRequest
 
 router = APIRouter()
 

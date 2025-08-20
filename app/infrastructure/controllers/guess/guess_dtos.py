@@ -1,8 +1,13 @@
-
 from app.infrastructure.handlers.exceptions.GuessException import GuessException
-
 from app.infrastructure.handlers.global_handler import raise_http_error
-from app.model.schemas import GuessRequest
+
+from pydantic import BaseModel
+from typing import List
+
+class GuessRequest(BaseModel):
+    data: List[str]
+    input: str
+    id: int
 
 def field_validation(fieldName:str, fieldSize:int, min:int, max:int):
     if fieldSize >= min and fieldSize <= max:
@@ -19,7 +24,7 @@ def request_dto(request:GuessRequest):
     data  = field_validation("data", dataSize, 1, 100)
     
     message_error = input+data
-    print(message_error)
+
     if input != "" or data != "":
        raise raise_http_error(status_code=400, message=message_error) 
    

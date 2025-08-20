@@ -1,9 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.applications.usecases.guess_usecase import GuessUsecase
-from app.infrastructure.controllers.guess.guess_dtos import request_dto
+from app.infrastructure.controllers.guess.guess_dtos import GuessRequest, request_dto
 from app.infrastructure.gateways.guess.guess_impl import GuessImplementation
-from app.model.schemas import GuessRequest
 
 router = APIRouter()
 
@@ -13,12 +12,10 @@ def get_guess_usecase() -> GuessUsecase:
 
 @router.post("")
 def guess(
-    request: GuessRequest= Depends(request_dto), 
+    request: GuessRequest = Depends(request_dto), 
     guess_usecase: GuessUsecase = Depends(get_guess_usecase)
 ):
     try:
-        # validate_dto(request.input, request.data)
-        # return guess_usecase.predict_similarity(request.id, request.input, request.data)
-        return "teste"
+        return guess_usecase.predict_similarity(request.id, request.input, request.data)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
