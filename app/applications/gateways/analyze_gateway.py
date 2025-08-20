@@ -4,5 +4,5 @@ from sentence_transformers import InputExample
 class AnalyzeGateway(ABC):
 
     @abstractmethod
-    def analyze_model_errors(model_id: int, val_data: list[InputExample], threshold: float):
+    def route_action(type:str, model_id: int, threshold: float):
         pass

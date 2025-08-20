@@ -6,5 +6,5 @@ class AnalyzeUsecase:
     def __init__(self, analyze_gateway: AnalyzeGateway):
         self.analyze_gateway = analyze_gateway
         
-    def analyze_model_errors(self, model_id: int, val_data: list[InputExample], threshold: float):
-        return self.analyze_gateway.analyze_model_errors(model_id, val_data, threshold)
+    def route_action(self, type:str, model_id: int, threshold: float):
+        return self.analyze_gateway.route_action(type, model_id, threshold)
