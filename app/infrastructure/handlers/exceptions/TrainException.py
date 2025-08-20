@@ -1,8 +1,7 @@
-class GuessException:
+class TrainException:
     
     messages_group = {
-        "input": f"[Input]: must be between 3 and 100 ",
-        "data": f"[Data]: must be between 3 and 250 ",
+        "entries": f"[Entries]: must be between 1 and 100 ",
     }
 
     @classmethod

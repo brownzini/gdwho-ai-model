@@ -15,7 +15,7 @@ def field_validation(fieldName:str, fieldSize:int, min:int, max:int):
     else:
         return GuessException.getDefaultMessage(fieldName)
 
-def request_dto(request:GuessRequest):
+def guess_request_dto(request:GuessRequest):
     
     inputSize = len(request.input.strip())
     dataSize = len(request.data)

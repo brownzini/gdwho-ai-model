@@ -1,9 +1,7 @@
-from typing import List
 from app.applications.usecases.train_usecase import TrainUsecase
-from app.domain.entry_domain import EntryDomain
 from app.infrastructure.gateways.train.train_impl import TrainImplementation
 
-def test_get_model():
+def test_train_model():
     
     train_impl = TrainImplementation()
     usecase = TrainUsecase(train_impl)
@@ -19,4 +17,5 @@ def test_get_model():
     warmup_steps = 10
     
     result = usecase.train_model(model_id, raw_entries, epochs, batch_size, warmup_steps)
-    assert isinstance(result, str) 
+    
+    assert isinstance(result, bool) 
