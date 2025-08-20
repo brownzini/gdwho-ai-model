@@ -15,6 +15,6 @@ def train(
     train_usecase: TrainUsecase = Depends(get_train_usecase)
 ):
     try:
-        return train_usecase.get_model(request.id)
+        return train_usecase.train_model(request.id, request.entries, 3,4,10)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

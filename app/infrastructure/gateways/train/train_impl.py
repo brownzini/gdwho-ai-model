@@ -1,6 +1,8 @@
+from typing import List
 from app.applications.gateways.train_gateway import TrainGateway
+from app.domain.entry_domain import EntryDomain
 
 class TrainImplementation(TrainGateway):
     
-    def get_model(self, model_id: int) -> str:
-        return f"Modelo {model_id} carregado"
+    def train_model(self, id: int, entries:List[EntryDomain], epochs:int=3, batch_size:int=5, warmup_steps:int=10) -> None:
+        return f"Modelo carregado"
