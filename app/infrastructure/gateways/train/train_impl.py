@@ -3,7 +3,7 @@ from sentence_transformers import SentenceTransformer, losses, InputExample
 from torch.utils.data import DataLoader
 from sentence_transformers import SentenceTransformer
 from app.applications.gateways.train_gateway import TrainGateway
-from app.config.teste import get_model
+from app.config.model_config import get_model
 from app.domain.domain_constants import BASE_MODEL_NAME, MODEL_NAME_PREFIX
 from app.domain.entry_domain import EntryDomain
 

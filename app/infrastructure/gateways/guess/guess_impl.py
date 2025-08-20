@@ -1,5 +1,5 @@
 from app.applications.gateways.guess_gateway import GuessGateway
-from app.config.teste import get_model
+from app.config.model_config import get_model
 import torch
 
 class GuessImplementation(GuessGateway):

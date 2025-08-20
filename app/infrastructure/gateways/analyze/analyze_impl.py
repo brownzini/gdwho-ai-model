@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.decomposition import PCA
 
 from app.applications.gateways.analyze_gateway import AnalyzeGateway
-from app.config.teste import get_model
+from app.config.model_config import get_model
 from app.domain.domain_constants import DATA_CROSS_MODEL_NAME_PREFIX, DATA_ERRORS_MODEL_NAME_PREFIX, GRAPHS_MODEL_NAME_PREFIX
 from app.infrastructure.data_loader.loader import load_csv_as_input_examples
 from pathlib import Path
@@ -65,8 +65,8 @@ class AnalyzeImplementation(AnalyzeGateway):
         for i, txt in enumerate(texts):
             plt.annotate(txt, (embeddings_2d[i,0], embeddings_2d[i,1]), fontsize=8, alpha=0.7)
         plt.title("Visualização 2D dos embeddings do modelo")
-        plt.xlabel("[Progressão]")
-        plt.ylabel("[Distância]")
+        plt.xlabel("[Distância]")
+        plt.ylabel("[Progressão]")
 
         buf = BytesIO()
         plt.savefig(buf, format="png")
