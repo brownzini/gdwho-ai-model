@@ -19,3 +19,14 @@ async def analyze(
         return analyze_usecase.route_action(type, id, 3)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("")
+async def analyze(
+    id: int, 
+    analyze_usecase: AnalyzeUsecase = Depends(get_analyze_usecase)
+):
+    try:
+        type = "validation"
+        return analyze_usecase.route_action(type, id, 3)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
