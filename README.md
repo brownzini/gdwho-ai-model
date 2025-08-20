@@ -22,5 +22,39 @@ Este repositório contém a implementação para o sistema que desenvolvi com fo
 
 A base do sistema está na criação de embeddings de sentenças, que representam a semântica em vetores numéricos a partir das entradas do usuário (ENTRIES). Quando um palpite é submetido ao modelo, ele é comparado com a lista de dicas (dataList) previamente aprendidas e com os dados de respostas armazenados em cache (REDIS). Esse processo possibilita que o administrador realize análises mais precisas sobre os resultados.
 
+### Estrutura do Projeto
+
+O projeto segue uma arquitetura em camadas.
+
+```
+└── gdwho-ai-model/
+    ├── app/       
+    │    │   
+    │    ├── applications/  # Orquestramento da regra de negócio
+    │    │     │
+    |    │     ├── gateways/ # Interface para abstração
+    |    │     └── usecases/ # Para inversão de dependencia
+    │    │
+    │    ├── config/   # Configuração global
+    │    │
+    │    ├── domain/  # Regra de negócio base
+    │    │
+    │    ├── infrastructure/ # Camada externa do sistema
+    |    |     | 
+    |    |     ├── controllers/ # Expoe as rotas da api
+    |    |     | 
+    |    |     ├── data/ # Mantem os data-sets para analise
+    |    |     | 
+    |    |     ├── data_loader/ # Carrega inputs de csv
+    |    |     | 
+    |    |     ├── gateways/    # Implementações de interfaces para inversão de dependencia
+    |    |     | 
+    |    |     └── handlers/    # Chamadas de erros personalizadas
+    │    │
+    │    └── tests/ # Teste de treinamento   
+    └── screenshot/ # Prints         
+```
+
 ### Gráfico de Desempenho ###
 ![desempenho imagem](./screenshot/analyze.png)
+ 
