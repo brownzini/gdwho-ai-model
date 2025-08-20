@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from app.infrastructure.controllers.guess import guess_controller
 from app.infrastructure.controllers.train import train_controller
 

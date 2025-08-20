@@ -19,7 +19,7 @@ def field_validation(fieldName:str, fieldSize:int, min:int, max:int):
 def train_request_dto(request:TrainRequest):
     
     entriesSize = len(request.entries)
-    message_error = field_validation("entries", entriesSize, 3, 100)
+    message_error = field_validation("entries", entriesSize, 1, 100)
     
     if message_error != "":
         raise raise_http_error(status_code=400, message=message_error) 
